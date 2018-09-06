@@ -1,0 +1,16 @@
+{
+	"name": "token_chaincode",
+	"version": "1.0.0",
+	"description": "An implementation of ERC20 standard in hyperledger, using node.js",
+	"engines": {
+		"node": ">=8.4.0",
+		"npm": ">=5.3.0"
+	},
+	"scripts": {
+		"start": "node tokenChaincode.js"
+	},
+	"engine-strict": true,
+	"dependencies": {
+		"fabric-shim": "unstable"
+	}
+}
