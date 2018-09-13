@@ -1,10 +1,10 @@
 # Techracers HyperLedger
 
-This is an open source repository for writing simple, [ERC20](https://en.wikipedia.org/wiki/ERC-20) based token [Chaincode](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html) on HyperLedger, using Node.js.
+This is an open source repository for writing simple, [ERC20](https://en.wikipedia.org/wiki/ERC-20) based token [Chaincode](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html) in HyperLedger, using Node.js.
 
 You can use this repository to build distributed networks, using the widely tested and accepted ERC20 standard, in a [HyperLedger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.2/whatis.html) environment:
 
-> NOTE: This repository assumes, you're already familiar with HyperLedger Fabric, and your system already has the prerequisites to start development on HyperLedger. If not, refer to [prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html), [key concepts](https://hyperledger-fabric.readthedocs.io/en/release-1.2/key_concepts.html) and [tutorials](https://hyperledger-fabric.readthedocs.io/en/release-1.2/tutorials.html) in HyperLedger's documentation.
+> NOTE: This repository assumes, you're already familiar with HyperLedger Fabric, and your system already has the prerequisites to start development on HyperLedger. If not, refer to [prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html), [key concepts](https://hyperledger-fabric.readthedocs.io/en/release-1.2/key_concepts.html) and [tutorials](https://hyperledger-fabric.readthedocs.io/en/release-1.2/tutorials.html) in HyperLedger documentation.
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ cd path/to/repository/folder
 cd network
 ```
 
-Once you are in the network folder you can create our hyperledger network environment. It will create 2 organizations for you- Org1 and Org2 repectively, with an Orderer. Having 2 peers each.
+Once you are in the network folder you can create our hyperledger network environment. It will create 2 organizations for you- Org1 and Org2 respectively, with an Orderer. Having 2 peers each.
 
 ## Housekeeping
 
@@ -80,7 +80,7 @@ It created the required certificates for each entity of HyperLedger using the `c
 
 It also created `channel.tx`, `genesis.block`, `Org1MSPanchors.tx` and `Org1MSPanchors.tx`.
 
-> Note: We cannot cover everything in this README, to understand the intrecasies behind the process in detail [go through this tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
+> Note: We cannot cover everything in this README, to understand the intricacies behind the process in detail [go through this tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
 
 It also created docker containers and volumes for:
 - peer0 and peer1 or Org1
@@ -89,14 +89,14 @@ It also created docker containers and volumes for:
 - cli
 - chaincode
 
-Check them using `docker ps` and `docker volume ls`. We also created a channel name `mychannel` between Org1 and Org2, both the peers of each org are a part of this channel. Then installed our chjaincode on `peer0` of each org and instantiated our chaincode, naming it `mycc`. You can see the logs of respective peer/chaincode using:
+Check them using `docker ps` and `docker volume ls`. We also created a channel name `mychannel` between Org1 and Org2, both the peers of each org are a part of this channel. Then installed our chaincode on `peer0` of each org and instantiated our chaincode, naming it `mycc`. You can see the logs of respective peer/chaincode using:
 
 ```sh
 docker logs <peer identity> // type peer and then tab to see your options
 docker logs <chaincode identity> // type dev and then tab to see your options
 ```
 
-> Note: For debugging you can access your chaincode's and peers logs `docker logs <press TAB to see options>`; and If you don't see a container for chaincode (dev-peer0.org1.techracers.com-mycc-1.0) then there was a problem instantiating our token chaincode.
+> Note: For debugging you can access your chaincode and peers logs `docker logs <press TAB to see options>`; and If you don't see a container for chaincode (dev-peer0.org1.techracers.com-mycc-1.0) then there was a problem instantiating our token chaincode.
 
 ## Let's play with our token
 
@@ -118,7 +118,7 @@ Once you're in the CLI you can call the getter functions provided in our SimpleT
 
 #### getOwner
 
-This function will return the owner of the token contract. Now it is the MSPID which instantiated the contract.
+This function will return the owner of the token contract. Now it is the MSPID which instantiated the contract, , you can see it [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/OwnableToken.js#L17).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getOwner"]}'
@@ -129,7 +129,7 @@ Here `mychannel` is our channel name and `mycc` is the name of our chaincode, an
 
 #### getName
 
-This function will return the name of our token contract. It was set to `Simple Token` while instantiating the contract, you can see it [here](). // add permlink
+This function will return the name of our token contract. It was set to `Simple Token` while instantiating the contract, you can see it [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Detailed.js#L17).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getName"]}'
@@ -140,7 +140,7 @@ As you can see `Simple Token` is our current token name.
 
 #### getSymbol
 
-This function will return the symbol for our token contract. It was set to `SMT` while instantiating the contract, you can see it [here](). // add permlink
+This function will return the symbol for our token contract. It was set to `SMT` while instantiating the contract, you can see it [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Detailed.js#L26).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getSymbol"]}'
@@ -151,7 +151,7 @@ As you can see `SMT` is our current token symbol.
 
 #### getTotalSupply
 
-This function will return the total supply for our token contract. It defaults to `0` until it is set once. You can find the required logic [here](). // add permlink
+This function will return the total supply for our token contract. It defaults to `0` until it is set once. You can find the required logic [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Basic.js#L28).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getTotalSupply"]}'
@@ -162,7 +162,7 @@ As you can see `0` is our current total supply.
 
 #### isMintingAllowed
 
-This getter returns the value of `isMintingAllowed` boolean stored on HyperLedger. It defaults to `undefined` until it is set once. You can find the required logic [here](). // add permlink
+This getter returns the value of `isMintingAllowed` boolean stored on HyperLedger. It defaults to `undefined` until it is set once. You can find the required logic [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/MintableToken.js#L16).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["isMintingAllowed"]}'
@@ -173,7 +173,7 @@ As you can see `isMintingAllowed` is now, `undefined`. It will return `true` or 
 
 #### getAllowance
 
-This getter returns the value of `allowance` set by a token owner for a spender MSPID. It takes as Input the MSPID token owner as first argument and MSPID of spender as second argument. It defaults to `0` until it is set once. You can find the required logic [here](). // add permlink
+This getter returns the value of `allowance` set by a token owner for a spender MSPID. It takes as Input the MSPID token owner as first argument and MSPID of spender as second argument. It defaults to `0` until it is set once. You can find the required logic [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20.js#L17).
 
 ```sh
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getAllowance", "Org1MSP", "Org2MSP"]}'
@@ -198,11 +198,11 @@ peer chaincode query -C mychannel -n mycc -c '{"Args":["getBalanceOf", "Org2MSP"
 0
 ```
 
-You can checkout the required code [here](). // add permlink
+You can checkout the required code [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Basic.js#L16).
 
 ### Setter functions
 
-Once you're done with the getter calls let's explore the setter functions provided in our SimpleToken. Remember you will need to satisfy the endorsement policy before you can make these transactions happen, so you will see some extra fields here. It will also take some time when a setter is called for the first time to a specific peer, later it returns results almost instantaniously. Also right now the CLI's configuration is set to Org1 peer0, you can check it using:
+Once you're done with the getter calls let's explore the setter functions provided in our SimpleToken. Remember you will need to satisfy the endorsement policy before you can make these transactions happen, so you will see some extra fields here. It will also take some time when a setter is called for the first time to a specific peer, later it returns results almost instantaneously. Also right now the CLI's configuration is set to Org1 peer0, you can check it using:
 
 ```sh
 echo $CORE_PEER_ADDRESS
@@ -284,7 +284,7 @@ Error: Function only accessible to token owner: Org1MSP.
 
 > Note: You can enquire about other errors in a similar fashion, just be sure you are hitting the right peer.
 
-If you want to know more about other validations you can check the chaincode [here](). // add permlink
+If you want to know more about other validations you can check the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/MintableToken.js#L25).
 
 
 #### mint
@@ -304,7 +304,7 @@ peer chaincode query -C mychannel -n mycc -c '{"Args":["getBalanceOf", "Org1MSP"
 100.2345
 ```
 
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/MintableToken.js#L50).
 
 #### transfer
 
@@ -323,7 +323,7 @@ peer chaincode query -C mychannel -n mycc -c '{"Args":["getBalanceOf", "Org2MSP"
 10
 ```
 
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Basic.js#L37).
 
 #### updateTokenName
 
@@ -341,7 +341,7 @@ Check it using:
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getName"]}'
 TECH COIN
 ```
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Detailed.js#L58).
 
 #### updateTokenSymbol
 
@@ -359,7 +359,7 @@ Check it using:
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getSymbol"]}'
 TEC
 ```
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20Detailed.js#L35).
 
 #### updateApproval
 
@@ -377,11 +377,11 @@ Check it using:
 peer chaincode query -C mychannel -n mycc -c '{"Args":["getAllowance", "Org1MSP", "Org2MSP"]}'
 30
 ```
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20.js#L90).
 
 #### transferFrom
 
-Once you have approved Org2 to transfer on behalf of Org1. First set the config in cli for Org2, so you can call functions on it's behalf.
+Once you have approved Org2 to transfer on behalf of Org1. First set the config in cli for Org2, so you can call functions on its behalf.
 
 ```sh
 export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.techracers.com/users/Admin@org2.techracers.com/msp
@@ -414,11 +414,11 @@ peer chaincode query -C mychannel -n mycc -c '{"Args":["getBalanceOf", "Org2MSP"
 10
 ```
 
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/ERC20.js#L35).
 
 #### transferOwnership
 
-Lastly set your conffig back to Owner of token and try transfering Token Ownership.
+Lastly set your config back to Owner of token and try transfering Token Ownership.
 
 ```sh
 export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.techracers.com/users/Admin@org1.techracers.com/msp
@@ -441,14 +441,14 @@ peer chaincode query -C mychannel -n mycc -c '{"Args":["getOwner"]}'
 Org2MSP
 ```
 
-If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here]().
+If you experience errors troubleshoot them using `docker log` and you can find the chaincode [here](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/f5207ea4b0457abd02ca8d92ee02673393d1af6f/chaincode/token_chaincode/node/tokens/OwnableToken.js#L27).
 
 ## ERC20 Architecture by Zeppelin
-We used [Zepeelin Solidity's](https://github.com/OpenZeppelin/openzeppelin-solidity) tested standards to create this ERC20 token version on HyperLedger. You can refer to the architechural model of ERC20 here:
+We used [Zepeelin Solidity's](https://github.com/OpenZeppelin/openzeppelin-solidity) tested standards to create this ERC20 token version on HyperLedger. You can refer to the architectural model of ERC20 here:
 
-- **Helpers**  - Includes validations, checks which must be fulfilled during chaincode invocation or query; and utils for making the code `DRY`.
-- **examples** - A simple chaincode that demonstrate how to create a simple token using the basic chaincodes provided in the repository.
-- **ERC20** - A standard interface for fungible ERC20 tokens on HyperLedger.
+- **helpers**  - Includes validations, checks which must be fulfilled during chaincode invocation or query; and utils for making the code `DRY`.
+- **examples** - A simple chaincode that demonstrate how to create a simple token using the basic chain codes provided in the repository.
+- **tokens** - A standard interface for fungible ERC20 tokens on HyperLedger.
 
 ## Security
 Techracers is meant to provide secure and simple code, but please use common sense when doing anything that deals with real money! We take no responsibility for your implementation decisions and any security problem you might experience.
@@ -457,7 +457,4 @@ The core development principles and strategies that Techracers is based on inclu
 
 If you need further help, please email [support@techracers.com](mailto:support@techracers.com). If you want to work with us email at [sales@techracers.com](mailto:sales@techracers.com)
 
-> Note: We welcome recommendations and suggestions from the Open source community, If you think you can help us [raise an issue]().
-
-## License
-Code released under the [MIT License]().
+> Note: We welcome recommendations and suggestions from the Open source community, If you think you can help us by [raising an issue](https://github.com/grepruby/ERC20-Token-On-Hyperledger/issues).
