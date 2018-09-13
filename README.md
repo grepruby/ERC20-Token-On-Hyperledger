@@ -458,3 +458,6 @@ The core development principles and strategies that Techracers is based on inclu
 If you need further help, please email [support@techracers.com](mailto:support@techracers.com). If you want to work with us email at [sales@techracers.com](mailto:sales@techracers.com)
 
 > Note: We welcome recommendations and suggestions from the Open source community, If you think you can help us by [raising an issue](https://github.com/grepruby/ERC20-Token-On-Hyperledger/issues).
+
+## License
+Code released under the [MIT License](https://github.com/grepruby/ERC20-Token-On-Hyperledger/blob/v1.0/LICENSE).
